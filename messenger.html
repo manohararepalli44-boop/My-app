@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="te">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Messenger Chat</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #fafafa; margin: 0; padding: 20px; text-align: center; }
+        .chat-container { background: white; border: 1px solid #dbdbdb; padding: 20px; display: inline-block; width: 320px; border-radius: 10px; text-align: left; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        .messages-box { height: 250px; overflow-y: auto; border: 1px solid #efefef; padding: 10px; margin-bottom: 15px; background: #fbc7d4; background: -webkit-linear-gradient(to right, #e8cbc0, #636fa4); background: linear-gradient(to right, #fafafa, #eaeaea); border-radius: 5px; }
+        input[type="text"] { width: 70%; padding: 8px; border: 1px solid #dbdbdb; border-radius: 5px; }
+        button { width: 22%; padding: 8px; background-color: #0095f6; color: white; border: none; border-radius: 5px; font-weight: bold; cursor: pointer; }
+        .back-link { color: #262626; text-decoration: none; font-size: 14px; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="chat-container">
+        <a href="/" class="back-link">⬅ వెనక్కి వెళ్ళు</a>
+        <h3>💬 Messenger Chat</h3>
+        <hr>
+        <div class="messages-box">
+            {% for msg in messages %}
+                <p><b>{{ msg[0] }}:</b> {{ msg[1] }}</p>
+            {% else %}
+                <p style="color: gray; text-align: center;">ఇంకా చాట్ మెసేజ్‌లు లేవు...</p>
+            {% endfor %}
+        </div>
+        <form action="/send_message" method="POST">
+            <input type="text" name="message_text" placeholder="మెసేజ్ టైప్ చెయ్..." required>
+            <button type="submit">Send</button>
+        </form>
+    </div>
+</body>
+</html>
